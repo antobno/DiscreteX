@@ -1,0 +1,58 @@
+\chapter[PRINCIPIOS DE INDUCCIÓN Y DE BUEN ORDEN]{PRINCIPIOS DE \\ INDUCCIÓN Y DE BUEN ORDEN}\label{sec:induction}
+\printchaptertableofcontents
+
+Uno de los métodos más usados para realizar demostraciones es el Método de Inducción Matemática. Este fue creado por Blaise Pascal en el siglo XVII, aunque el primer matemático que ofreció una demostración formal mediante el uso explicito de la inducción matemática fue el italiano Franciscus Maurolicus (1494-1575). Maurolicus utilizo la inducción para demostrar que para todo entero positivo $n$
+$$1 + 3 + 5 + \cdots + (2n-1) = n^2.$$
+Dicho método ha servido para demostrar teoremas en distintas áreas de la matemática; como: geometría, teoría de grafos, teoría de números, análisis combinatorio.
+
+Una manera informal (pero eficaz) de ver y explicar el Principio de Inducción Matemática es mediante fichas de dominó (véase la figura \ref{fig:INDUCCION}). Imaginemos que tenemos fichas de dominó puestas en una hilera infinita. Si empujamos la primer ficha, esta empujará la segunda ficha; la segunda ficha empujará la tercer ficha; la tercer ficha empujara la cuarta ficha; y así sucesivamente hasta que caigan todas las fichas. En este caso, cada ficha representa un número natural.
+
+Como preliminar, debemos saber que cualquier proposición se puede clasificar como general o particular. Algunos ejemplos de proposiciones generales son:
+
+\newpage
+\marginElement{\justify
+\includegraphics[width=\linewidth]{Images/ApendiceA/PASCAL.jpeg}
+\textbf{\fontencoding{T1}\fontfamily{phv}\selectfont\color{cw0}Blaise Pascal:} Nacido el 19 de junio de 1623 en Clermont-Ferrand, Francia; fue un genio precoz y de clara inteligencia, pues su entusiasmo juvenil por la ciencia se materializó en importantes y precursoras aportaciones a la física y a las matemáticas. Siendo aún niño, con solo doce años, sin ayuda alguna demostró que la suma de los ángulos de un triángulo es siempre igual a 180°. Pese a su frágil salud y corta vida, murió a los treinta y nueve años, pero su huella quedó grabada en la historia de la física y de la informática.
+}
+\sideFigure[\label{fig:INDUCCION}Representación del Principio de Inducción]{
+\includegraphics[width=\linewidth]{Images/ApendiceA/uuu.pdf}
+}
+
+\begin{enumerate}
+    \item Todos los ciudadanos de México tienen derecho a la educación.
+    \item Todos los números que terminan en cero son divisibles entre 5.
+\end{enumerate}
+Algunos ejemplos de proposiciones particulares son:
+\begin{enumerate}
+    \item Guinevere tiene derecho a la educación 
+    \item 300 es divisible entre 5.
+\end{enumerate}
+El proceso de obtener una proposición particular de una general se llama \textbf{deducción}. Por ejemplo, si tenemos
+\begin{enumerate}
+    \item Todos los ciudadanos de México tienen derecho a la educación.
+    \item Guinevere es mexicana.
+    \item Guinevere tiene derecho a la educación.
+\end{enumerate}
+entonces de la proposición general (1), junto con la proposición particular (2), se obtiene la proposición particular (3).
+
+El proceso de obtener proposiciones generales de proposiciones particulares se llama \textbf{inducción}. El razonamiento inductivo puede conducir a conclusiones falsas así como a verdaderas. Por ejemplo, si tenemos
+\begin{enumerate}
+    \item 300 es divisible entre 5.
+    \item Todos los números que terminan en cero son divisibles entre 5.
+\end{enumerate}
+entonces la proposición general (2), obtenida de la proposición particular (1), es verdadera. Pero, si consideramos
+\begin{enumerate}
+    \item 300 es divisible entre 5.
+    \item Todos los números con tres cifras son divisibles entre 5.
+\end{enumerate}
+entonces la proposición general (2), deducida de la proposición particular (1), es falsa.
+
+\section{Inducción errónea en las matemáticas}
+
+\section{El principio de la inducción matemática}
+
+\section{El principio de buen orden}
+
+\section{Más ejemplos de inducción}
+
+\section{Ejercicios}

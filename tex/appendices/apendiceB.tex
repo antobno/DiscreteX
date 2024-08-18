@@ -1,0 +1,156 @@
+\chapter[INTRODUCCIÓN A LA PROGRAMACIÓN]{INTRODUCCIÓN A LA \\ PROGRAMACIÓN}
+\printchaptertableofcontents
+
+El lenguaje C facilita un método estructurado y disciplinado para el diseño de programas. En este apéndice introducimos la programación en C y presentamos varios ejemplos que ilustran muchas características importantes de C. Analizamos cuidadosamente cada ejemplo, línea por línea. En la sección B.7 presentamos una introducción a la programación estructurada en C. 
+
+\section{Un programa sencillo en C: La impresión de una línea de texto}
+
+C utiliza una notación que puede parecer extraña para quien no es programador. Comencemos considerando un programa sencillo en C. Nuestro primer ejemplo imprime una línea de texto. El programa y su resultado en pantalla aparecen en el programa \ref{Programa1}.
+
+Aun cuando este programa es sencillo, ilustra muchas características importantes del lenguaje C. Ahora consideremos con detalle cada línea del programa. Las líneas 1 y 2:
+\begin{minted}[escapeinside=]{c}
+    /* Primer programa en C:
+           primer_programa.c */
+\end{minted}
+comienzan con \mintinline{tex}{/*} y terminan con \mintinline{tex}{*/}, lo que indica que estas dos líneas son un comentario. Los programadores insertan comentarios para documentar los programas y para mejorar su legibilidad. Los comentarios no provocan que la computadora realice acción alguna durante la ejecución del programa. El compilador de C ignora los comentarios y no genera código objeto en lenguaje máquina. El comentario anterior sólo describe el número de la figura, el nombre del archivo y el propósito del programa. Los comentarios también ayudan a otras personas a leer y entender un programa, pero demasiados comentarios pueden ocasionar que un programa sea difícil de leer.
+
+\begin{listing}[h!]
+\begin{minted}[escapeinside=]{c}
+    /* Primer programa en C:
+           primer_programa.c */
+    #include <stdio.h>
+    
+    /* la función main inicia la ejecución del programa */
+    int main(void)
+    {
+        printf("Bienvenido a C!\n");
+        return 0; /* indica que el programa terminó con éxito */
+    } /* fin de la función main */
+\end{minted}
+\begin{compilado}
+    Bienvenido a C!
+\end{compilado}
+\caption{Programa de impresión de texto}\label{Programa1}
+\end{listing}
+\noindent La línea 3
+\begin{minted}[firstnumber=3,escapeinside=]{c}
+    #include <stdio.h>
+\end{minted}
+\noindent es una directiva del preprocesador de C. Las líneas que comienzan con \mintinline{tex}{#} son procesadas por el preprocesador antes de que el programa se compile. Esta línea en particular indica al preprocesador que incluya en el programa el contenido del \emph{encabezado estándar de entrada/salida} (\textbf{stdio.h}). Este encabezado contiene información que el compilador utiliza cuando compila las llamadas a las funciones de la biblioteca estándar de entrada/salida, como \mintinline{c}{printf}.
+
+La línea 6
+\begin{minted}[firstnumber=6,escapeinside=]{c}
+    int main(  )
+\end{minted}
+\noindent forma parte de todos los programas en C. Los paréntesis que aparecen después de \mintinline{tex}{main} indican que \mintinline{tex}{main} es un bloque de construcción de programas llamado función. Los programas en C contienen una o más funciones, una de las cuales debe ser \mintinline{tex}{main}. Todo programa en C comienza su ejecución en la función \mintinline{tex}{main}.
+
+La llave izquierda (línea 7), \verb|{|, debe iniciar el cuerpo de cada función. Una llave derecha correspondiente (línea 10), debe finalizar cada función. Este par de \emph{llaves} y la parte del programa entre ellas se conocen como bloque. El bloque es una unidad importante del programa en C.
+
+La línea 8
+\begin{minted}[firstnumber=8,escapeinside=]{c}
+    printf("Bienvenido a C!\n");
+\end{minted}
+\noindent indica a la computadora que realice una acción, es decir, que imprima en la pantalla la cadena de caracteres contenida entre las comillas. En algunas ocasiones a una cadena se le llama cadena de caracteres, mensaje o literal. La línea completa [que incluye \mintinline{c}{printf}, su argumento entre paréntesis, y el punto y coma (\verb|;|)] se conoce como instrucción. Toda instrucción debe finalizar con un punto y coma (también conocido como terminador de la instrucción). Cuando la instrucción \mintinline{c}{printf} anterior se ejecuta, esta imprime en la pantalla el mensaje \mintinline{c}{Bienvenido a C!} En general, los caracteres se imprimen exactamente como aparecen entre las comillas de la instrucción \mintinline{c}{printf}. Observe que los caracteres \mintinline{python}{\n} no aparecieron en pantalla. La diagonal invertida (\verb|\|) se conoce como carácter de escape. Este indica que se espera que \mintinline{c}{printf} haga algo fuera de lo ordinario. Cuando una diagonal invertida se encuentra dentro de una cadena, el compilador ve el siguiente carácter y lo combina con la diagonal invertida para formar una secuencia de escape. La secuencia de escape \mintinline{python}{\n} significa nueva línea. Cuando una nueva línea aparece en la salida de la cadena por medio de \mintinline{c}{printf}, esta nueva línea ocasiona que el cursor se posicione al comienzo de la siguiente línea de la pantalla. En la tabla siguiente, aparecen algunas secuencias de escape comunes.
+\begin{nscenter}
+    \begin{NiceTabular}{cc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+    \CodeBefore
+    \rowcolor{cw0!80}{1}
+    \rowcolors{2}{cw2!70!white}{cw1!30!white}
+    \Body
+    \RowStyle[color=white]{}
+        \RowStyle{\bfseries}\makecell{Secuencia \\ de escape} & Descripción \\
+        \verb|\n| & \makecell{Nueva línea: Coloca el cursor al \\ principio de la siguiente línea} \\
+        \verb|\t| & \makecell{Tabulador horizontal: Mueve el cursor \\ a la siguiente posición del tabulador} \\
+        \verb|\a| & Alerta: Suena la campana del sistema \\
+        \verb|\\| & \makecell{Diagonal invertida: Inserta una \\ diagonal invertida en una cadena} \\
+        \verb|\"| & \makecell{Comillas: Inserta unas comillas \\ en una cadena de caracteres}
+    \end{NiceTabular}
+    \captionof{table}{Algunas secuencias comunes de escape}\label{tab:secuencias_de_escape}
+\end{nscenter}
+
+Las dos últimas secuencias de escape de la tabla \ref{tab:secuencias_de_escape} pueden parecer extrañas. Debido a que la diagonal invertida tiene un significado especial en una cadena, es decir, que el compilador la reconoce como un carácter de escape, nosotros utilizamos dos diagonales invertidas para colocar una sola diagonal invertida en una cadena. Imprimir comillas también representa un problema, ya que dichas comillas marcan el límite de una cadena; de hecho, estas comillas no se imprimen. Al utilizar la secuencia de escape \mintinline{matlab}{\"} en una cadena para que sea la salida de \mintinline{tex}{printf}, indicamos que \mintinline{tex}{printf} debe desplegar unas comillas.
+
+La línea 9
+\begin{minted}[firstnumber=9,escapeinside=]{c}
+    return 0;
+\end{minted}
+\noindent se incluye al final de toda función \mintinline{c}{main}. La palabra reservada \mintinline{c}{return} representa a uno de los diversos medios que utilizaremos para salir de una función. Cuando se utiliza la instrucción \mintinline{c}{return} al final de \mintinline{c}{main}, como mostramos en este caso, el valor \mintinline{c}{0} indica que el programa finalizó exitosamente. La llave derecha (línea 10), \verb|}| indica el final de la función \mintinline{c}{main}.
+
+Resulta importante observar que las funciones de la biblioteca estándar como \mintinline{c}{printf} y \mintinline{c}{scanf} no forman parte del lenguaje de programación C. Por ejemplo, el compilador no puede encontrar errores de escritura en \mintinline{c}{printf} o \mintinline{c}{scanf}. Cuando el compilador compila una instrucción \mintinline{c}{printf}, este sólo proporciona espacio en el programa objeto para una “llamada” a la función de biblioteca. Sin embargo, el compilador no sabe en dónde están las funciones de biblioteca; el enlazador sí lo sabe. Cuando se ejecuta el enlazador, este localiza las funciones de biblioteca e inserta las llamadas apropiadas para dichas funciones en el programa objeto. Ahora el programa objeto está “completo” y listo para ejecutarse. De hecho, al programa enlazado con frecuencia se le conoce como ejecutable. Si el nombre de la función está mal escrito, es el enlazador quien detectará el error, ya que no será capaz de hacer coincidir el nombre que se encuentra en el programa en C, con el nombre de ninguna función conocida de las bibliotecas. La función \mintinline{c}{printf} puede imprimir de diferentes formas el mensaje \mintinline{tex}{Bienvenido a C!} Por ejemplo, el programa \ref{Programa2} produce la misma salida que el programa \ref{Programa1}. 
+
+\begin{listing}[h!]
+\begin{minted}[escapeinside=]{c}
+    /* Impresión de una línea mediante
+           dos instrucciones printf */
+    #include <stdio.h>
+    
+    /* la función main inicia la ejecución del programa */
+    int main(void)
+    {
+        printf("Bienvenido ");
+        printf("a C!\n");
+        return 0; /* indica que el programa terminó con éxito */
+    } /* fin de la función main */
+\end{minted}
+\begin{compilado}
+    Bienvenido a C!
+\end{compilado}
+\caption{Programa de impresión de texto}\label{Programa2}
+\end{listing}
+\noindent Esto funciona porque cada \mintinline{c}{printf} continúa con la impresión a partir de donde la función \mintinline{c}{printf} anterior dejó de imprimir. La primera \mintinline{c}{printf} (línea 8) imprime \mintinline{tex}{Bienvenido} seguido por un espacio, y la segunda \mintinline{c}{printf} (línea 9) comienza a imprimir en la misma línea, inmediatamente después del espacio.
+Una sola \mintinline{c}{printf} puede imprimir varias líneas utilizando caracteres de nueva línea, como en el programa \ref{Programa3}. Cada vez que aparece la secuencia de escape \mintinline{python}{\n} (nueva línea), la salida continúa al principio de la siguiente línea.
+\begin{listing}[h!]
+\begin{minted}[escapeinside=]{c}
+    /* Impresión de múltiples líneas mediante
+           una sola instrucción printf */
+    #include <stdio.h>
+    
+    /* la función main inicia la ejecución del programa */
+    int main(void)
+    {
+        printf("Bienvenido\na\nC!\n");
+        return 0; /* indica que el programa terminó con éxito */
+    } /* fin de la función main */
+\end{minted}
+\begin{compilado}
+    Bienvenido\\
+    a\\
+    C!
+\end{compilado}
+\caption{Programa de impresión de texto}\label{Programa3}
+\end{listing}
+
+\section{Otro programa sencillo en C: La suma de dos números enteros}
+
+Nuestro siguiente programa utiliza la función \mintinline{c}{scanf} de la biblioteca estándar para obtener dos enteros escritos por el usuario a través del teclado, para calcular la suma de dichos valores e imprimir el resultado mediante \mintinline{c}{printf}. El programa y el resultado del ejemplo aparecen en el programa \ref{Programa4}. Observe que en el diálogo de entrada/salida del programa \ref{Programa4} resaltamos los números introducidos por el usuario.
+\begin{listing}[h!]
+\begin{minted}[escapeinside=]{c}
+    /* Programa para poder
+           sumar dos números enteros */
+    #include <stdio.h>
+    
+    /* la función main inicia la ejecución del programa */
+    int main()
+    {
+        int entero1; /* primer número a introducir por el usuario */
+        int entero2; /* segundo número introducir por el usuario */
+        int suma; /* variable en la que se almacenará la suma */
+
+        printf("Introduzca el primer entero\n"); /* indicador */
+        scanf("%d", &entero1); /* lee un entero */
+
+        printf("Introduzca el segundo entero\n"); /* indicador */
+        scanf("%d", &entero2); /* lee un entero */
+
+        suma = entero1 + entero2; /* asigna el resultado a suma */
+
+        printf("La suma es %d\n", suma); /* imprime la suma */
+        
+        return 0; /* indica que el programa terminó con éxito */
+    } /* fin de la función main */
+\end{minted}
+\begin{compilado}
+    Bienvenido a C!
+\end{compilado}
+\caption{Programa de impresión de texto}\label{Programa4}
+\end{listing}

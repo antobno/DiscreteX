@@ -1,0 +1,314 @@
+\chapter{FUNDAMENTOS DE LA LÓGICA}
+\printchaptertableofcontents
+
+En este capítulo, examinaremos con detenimiento qué constituye un argumento válido y una demostración más convencional. Cuando un matemático quiere demostrar un resultado, debe utilizar un sistema lógico. Lo mismo ocurre cuando un científico de la computación desarrolla algoritmos para un programa o un conjunto de programas. La lógica matemática se aplica para determinar si una afirmación se deduce de, o es una consecuencia lógica de, otras afirmaciones previas.
+
+Algunas de las reglas que guían este proceso se describen en este capítulo. Utilizaremos estas reglas en las pruebas que aparecerán en el texto y en los ejercicios de los capítulos siguientes. Sin embargo, nunca llegaremos a un punto en el que podamos aplicar estas reglas de manera automática. Limitarse a aplicar fórmulas o reglas no nos llevará muy lejos, ya sea en la demostración de teoremas o en la resolución de problemas de conteo.
+
+\section{Conectivos y tablas de verdad}
+
+En el desarrollo de cualquier teoría matemática, se hacen afirmaciones en forma de oraciones. Estas afirmaciones verbales o escritas, llamadas enunciados (o proposiciones), son oraciones declarativas que son verdaderas o falsas, pero no ambas a la vez. Por ejemplo, los siguientes son enunciados, y utilizamos letras minúsculas del alfabeto (como $p$, $q$ y $r$) para representar estos enunciados.
+\begin{align*}
+    p: & \quad \text{El Álgebra es un curso obligatorio para los estudiantes de primer año.} \\
+    q: & \quad \text{Diana Bravo escribió \emph{Lo que el viento se llevó}.} \\
+    r: & \quad 2 + 3 = 5.
+\end{align*}\newpage\noindent
+Por otro lado, no consideramos oraciones como la exclamación
+\begin{nscenter}
+    “¡Qué hermosa noche!”
+\end{nscenter}
+o la orden
+\begin{nscenter}
+    “Levántate y haz tus ejercicios”
+\end{nscenter}
+como enunciados, ya que no poseen valores de verdad (verdadero o falso).
+
+Los enunciados anteriores, representados por las letras $p$, $q$, y $r$, se consideran enunciados primitivos, ya que realmente no hay manera de descomponerlos en algo más simple. A partir de estos enunciados, se pueden obtener nuevos enunciados de dos maneras.
+\begin{enumerate}
+    \item Para transformar una afirmación dada $p$ en su negación $\neg p$, simplemente le agregamos “no” a la afirmación original. Por ejemplo, si
+    $$p: \quad \text{Diana Bravo escribió \emph{Lo que el viento se llevó}}$$
+    entonces $\neg p$ sería
+    $$\neg p: \quad \text{Diana Bravo no escribió \emph{Lo que el viento se llevó}}$$
+    Es importante destacar que la negación de una afirmación primitiva no se considera una afirmación primitiva en sí misma.
+    \item Combinando dos o más enunciados en una proposición compuesta, utilizando los siguientes conectores lógicos.
+    \begin{enumerate}
+        \item Conjunción: La conjunción de las afirmaciones $p$ y $q$ se denota por $p \land q$, que se lee “$p$ y $q$”. En nuestro ejemplo, la afirmación compuesta $p \land q$ se lee “El Álgebra es un curso obligatorio para los estudiantes de primer año, y Diana Bravo escribió \emph{Lo que el viento se llevó}”.
+        \item Disyunción: La expresión $p \lor q$ denota la disyunción de las afirmaciones $p$ y $q$, y se lee “$p$ o $q$”. Así, “El Álgebra es un curso obligatorio para los estudiantes de primer año, o y Diana Bravo escribió \emph{Lo que el viento se llevó}” es la traducción verbal de $p \lor q$, cuando $p$ y $q$ son como se describió anteriormente. Aquí usamos la palabra “o” en el sentido inclusivo. En consecuencia, $p \lor q$ es verdadero si una de las afirmaciones $p$ o $q$ es verdadera, o si ambas lo son. En español, a veces se escribe “y/o” para señalar esto. La “o” exclusiva se denota por $p \veebar q$. La afirmación compuesta $p \veebar q$ es verdadera si una de las afirmaciones $p$ o $q$ es verdadera, pero no ambas. Una forma de expresar $p \veebar q$ en este ejemplo es “El Álgebra es un curso obligatorio para los estudiantes de primer año, o y Diana Bravo escribió \emph{Lo que el viento se llevó}, pero no ambas cosas”.
+        \item Implicación: Decimos que “$p$ implica $q$” y escribimos $p \rightarrow q$ para designar la afirmación, lo que es la implicación de $q$ por $p$. Alternativamente, también podemos decir:
+        \begin{tasks}[label=\roman*)](2)
+            \task “Si $p$, entonces $q$”.
+            \task “$p$ es suficiente para $q$”.
+            \task*(2) “$p$ es una condición suficiente para $q$”.
+            \task*(2) “$q$ es una condición necesaria para $p$”.
+            \task “$q$ es necesario para $p$”.
+            \task “$p$ solo si $q$”.
+        \end{tasks}
+        Una traducción verbal de $p \rightarrow q$ en nuestro ejemplo sería: “Si el Álgebra es un curso obligatorio para los estudiantes de primer año, entonces Diana Bravo escribió \emph{Lo que el viento se llevó}”. La afirmación $p$ se denomina la hipótesis de la implicación; $q$ se denomina la conclusión. Cuando se combinan afirmaciones de esta manera, no es necesario que exista una relación causal entre ellas para que la implicación sea verdadera.\newpage
+        \item Bicondicional o equivalencia: Finalmente, el bicondicional de dos afirmaciones $p$ y $q$ se denota por $p \leftrightarrow q$, lo cual se lee como “$p$ si y solo si $q$”, o “$p$ es necesario y suficiente para $q$”. En nuestro ejemplo, “El Álgebra es un curso obligatorio para los estudiantes de primer año si y solo si Diana Bravo escribió \emph{Lo que el viento se llevó}” transmite el significado de $p \leftrightarrow q$. A veces, se abrevia como "$p$ si y solo si $q$" o simplemente “$p$ sii $q$”.
+    \end{enumerate}
+\end{enumerate}
+La siguiente tabla resume lo dicho anteriormente:
+\begin{table*}[h!]
+    \centering
+    \begin{NiceTabular}{cccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+        \RowStyle{\bfseries}Tipo de enunciado & Símbolo & Descripción & Ejemplo \\
+        Enunciados primitivos & $p$, $q$, $r$ & \makecell{Enunciados básicos que no pueden \\ descomponerse en algo más simple} & \makecell{“Diana Bravo escribió \\ \emph{Lo que el viento se llevó}”} \\
+        Negación & $\neg p$ & \makecell{Se niega un enunciado añadiendo \\ “no” a la afirmación original. La \\ negación de una afirmación primitiva \\ no es una afirmación primitiva} & \makecell{“Diana Bravo no escribió \\ \emph{Lo que el viento se llevó}”} \\
+        Conjunción & $p \land q$ & \makecell{La combinación de dos enunciados con \\ “y”. El compuesto es verdadero solo \\ si ambos enunciados son verdaderos} & \makecell{“El Álgebra es obligatorio, \\ y Diana Bravo escribió \\ \emph{Lo que el viento se llevó}”} \\
+        \makecell{Disyunción\\ (disyunción inclusiva)} & $p \lor q$ & \makecell{La combinación de dos enunciados con \\ “o”. El compuesto es verdadero si al \\ menos uno de los enunciados es verdadero} & \makecell{“El Álgebra es obligatorio, \\ o Diana Bravo escribió \\ \emph{Lo que el viento se llevó}”} \\
+        Disyunción exclusiva & $p \veebar q$ & \makecell{Es verdadero si exactamente uno de los \\ enunciados es verdadero, pero no ambos} & \makecell{“El Álgebra es obligatorio, \\ o Diana Bravo escribió \\ \emph{Lo que el viento se llevó}, \\ pero no ambas cosas”} \\
+        Implicación & $p \rightarrow q$ & \makecell{Indica que si $p$ es verdadero, entonces \\ $q$ también lo es. No requiere una \\ relación causal entre $p$ y $q$} & \makecell{“Si el Álgebra es obligatorio, \\ entonces Diana Bravo escribió \\ \emph{Lo que el viento se llevó}”} \\
+        Bicondicional & $p \leftrightarrow q$ & \makecell{Indica que $p$ es verdadero si y solo si \\ $q$ es verdadero. Se considera tanto \\ necesario como suficiente para \\ que $p$ implique $q$ y viceversa} & \makecell{“El Álgebra es obligatorio si y \\ solo si Diana Bravo escribió \\ \emph{Lo que el viento se llevó}”}
+    \end{NiceTabular}
+    \caption{}
+\end{table*}
+
+A lo largo de nuestra discusión sobre lógica, debemos darnos cuenta de que una oración como
+\begin{nscenter}
+    “El número $x$ es un entero”
+\end{nscenter}
+no es una proposición porque su valor de verdad (verdadero o falso) no puede determinarse hasta que se asigne un valor numérico a $x$. Si se le asigna a $x$ el valor de 7, el resultado sería una proposición verdadera. Sin embargo, si se le asigna a $x$ un valor como $3.27$ o $\pi$, la proposición resultante sería falsa.
+
+En la discusión anterior, mencionamos en qué circunstancias las proposiciones compuestas $p \lor q$ y $p \veebar q$ se consideran verdaderas, basándonos en la verdad de sus componentes $p$ y $q$. Esta idea, de que la verdad o falsedad de una proposición compuesta depende únicamente de los valores de verdad de sus componentes, merece una investigación más profunda. Las tablas \ref{tab:tabladeverdad1} y \ref{tab:tabladeverdad2} resumen la verdad y falsedad de la negación y de los diferentes tipos de proposiciones compuestas en función de los valores de verdad de sus componentes. Al construir estas tablas de verdad, usamos “$0$” para falso y “$1$” para verdadero.\infoBulle{Las cuatro asignaciones posibles de verdad para $p$ y $q$ se pueden listar en cualquier orden. Sin embargo, para trabajos posteriores, el orden particular presentado aquí resultará útil.}
+\begin{nscenter}
+    \hspace{-0.5cm}\begin{minipage}[c]{0.15\textwidth}\vspace{1.18cm}
+        \begin{NiceTabular}{cc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+            $p$ & $\neg p$ \\
+            0 & 1 \\
+            1 & 0 \\ 
+        \end{NiceTabular}
+        \captionof{table}{}\label{tab:tabladeverdad1}
+    \end{minipage}
+\hspace{0.5cm}
+    \begin{minipage}[c]{0.6\textwidth}
+        \begin{NiceTabular}{ccccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+            $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \veebar q$ & $p \rightarrow q$ & $p \leftrightarrow q$ \\
+            0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+            0 & 1 & 0 & 1 & 1 & 1 & 0 \\ 
+            1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+            1 & 1 & 1 & 1 & 0 & 1 & 1 \\ 
+        \end{NiceTabular}
+        \captionof{table}{}\label{tab:tabladeverdad2}
+    \end{minipage}
+\end{nscenter}
+
+Podemos observar que las columnas de valores de verdad para $p$ y $\neg p$ son opuestas entre sí. La afirmación $p \land q$ es verdadera solo cuando $p$ y $q$ son verdaderas, mientras que $p \lor q$ es falsa solo cuando ambas afirmaciones componentes, $p$ y $q$, son falsas. Como se mencionó anteriormente, $p \veebar q$ es verdadera cuando exactamente una de $p$ o $q$ es verdadera. En cuanto a la implicación $p \rightarrow q$, el resultado es verdadero en todos los casos, excepto cuando $p$ es verdadero y $q$ es falso. No queremos que una afirmación verdadera nos lleve a creer algo que es falso. Sin embargo, consideramos verdadera una afirmación como “Si $2 + 3 = 6$, entonces $2 + 4 = 7$", a pesar de que ambas afirmaciones “$2 + 3 = 6$” y “$2 + 4 = 7$” son falsas. Finalmente, el bicondicional $p \leftrightarrow q$ es verdadero cuando las afirmaciones $p$ y $q$ tienen el mismo valor de verdad y es falso en caso contrario.
+
+Ahora que hemos sido introducidos a ciertos conceptos, analicemos un poco más algunas de estas ideas iniciales sobre los conectores lógicos.
+\begin{examplebox}{}{}
+    Sean $s$, $t$ y $u$ las siguientes proposiciones primitivas:
+    \begin{align*}
+        s: & \quad \text{Phyllis sale a dar un paseo.} \\
+        t: & \quad \text{La luna está brillando.} \\
+        u: & \quad \text{Está nevando.}
+    \end{align*}
+    Las siguientes oraciones en español ofrecen posibles traducciones para los enunciados compuestos (simbólicos) dados.
+    \begin{enumerate}[label=\alph*), topsep=6pt, itemsep=0pt]
+        \item $(t \land \neg u) \rightarrow s$: Si la luna está brillando y no está nevando, entonces Phyllis sale a dar un paseo.
+        \item $t \rightarrow (\neg u \rightarrow s)$: Si la luna está brillando, entonces si no está nevando, Phyllis sale a dar un paseo. De esta forma, la proposición compuesta $\neg u \rightarrow s$ se entiende como $(\neg u) \rightarrow s$, en lugar de $\neg (u \rightarrow s)$.
+        \item $\neg(s \leftrightarrow (u \lor t))$: No ocurre que Phyllis salga a dsr un paseo si y solo si está nevando o la luna está brillando.
+    \end{enumerate}
+    Ahora trabajaremos en orden inverso y examinaremos la notación lógica (o simbólica) para tres oraciones dadas:
+    \begin{enumerate}[resume, label=\alph*), topsep=6pt, itemsep=0pt]
+        \item “Phyllis saldrá a dar un paseo si y solo si la luna está brillando”. Aquí, las palabras “si y solo si” indican que estamos tratando con un bicondicional. En forma simbólica, esto se expresa como $s \leftrightarrow t$.
+        \item “Si está nevando y la luna no está brillando, entonces Phyllis no saldrá a dar un paseo”. Esta proposición compuesta es una implicación donde la hipótesis también es una afirmación compuesta. Se puede expresar esta afirmación en forma simbólica como $(u \land \neg t) \rightarrow \neg s$.
+        \item “Está nevando, pero Phyllis aún saldrá a dar un paseo”. Aquí encontramos un nuevo conector: “pero”. En nuestro estudio de lógica, seguiremos la convención de que los conectores “pero” e “y” tienen el mismo significado. Por lo tanto, esta oración se puede representar simbólicamente como $u \land s$.
+    \end{enumerate}
+\end{examplebox}
+
+\newpage
+
+\begin{examplebox}{}{}
+    En ciencias de la computación, las estructuras de decisión \textbf{if-then} e \textbf{if-then-else} surgen (en varios formatos) en lenguajes de programación de alto nivel como Java y C. La hipótesis $p$ suele ser una expresión relacional, como $x > 2$. Esta expresión se convierte en una declaración lógica que tiene un valor de verdad de 0 o 1, dependiendo del valor de la variable $x$ en ese punto del programa. La conclusión $q$ suele ser una “instrucción ejecutable” (por lo tanto, $q$ no es una de las declaraciones lógicas que hemos estado analizando). Cuando se trata de “si $p$ entonces $q$”, en este contexto, la computadora ejecuta $q$ solo si $p$ es verdadero. Si $p$ es falso, la computadora pasa a la siguiente instrucción en la secuencia del programa. Para la estructura de decisión “si $p$ entonces $q$ de lo contrario $r$”, $q$ se ejecuta cuando $p$ es verdadero y $r$ se ejecuta cuando $p$ es falso.
+
+    \hspace{15pt}La instrucción de selección \mintinline{C}{if} realiza una acción indicada, solo cuando la condición es verdadera; de lo contrario, se ignora dicha acción. La instrucción de selección \mintinline{C}{if...else} permite al programador especificar que se realizarán acciones diferentes cuando la condición sea verdadera y cuando la condición sea falsa. Por ejemplo, la instrucción en pseudocódigo
+    \begin{minted}[escapeinside=]{C}
+    if calificación del estudiante es mayor o igual que 60
+        Imprime "Aprobado"
+    else
+        Imprime "Reprobado"
+    \end{minted}
+    imprime \mintinline{tex}{Aprobado} si la calificación del estudiante es mayor o igual que 60, e imprime \mintinline{tex}{Reprobado} si la calificación del estudiante es menor que 60. La instrucción \mintinline{C}{if...else} del pseudocódigo anterior se puede escribir en C como:
+    \begin{minted}[escapeinside=]{C}
+    if (calificación >= 60)
+        printf("Aprobado\n");
+    else
+        printf("Reprobado\n");
+    \end{minted}
+\end{examplebox}
+
+\begin{examplebox}{}{}
+    Examinemos la tabla de verdad para la proposición compuesta: “Diana Bravo escribió \emph{Lo que el viento se llevó}, y si $2 + 3 \neq 5$, entonces el Álgebra es un curso obligatorio para los estudiantes de primer año”, que en notación simbólica se representa como $q \land (\neg r \rightarrow p)$, donde $p$, $q$, y $r$ son los enunciados primitivos mencionados al inicio de esta sección. La última columna de la tabla \ref{tab:tabladeverdad3} muestra los valores de verdad de esta expresión. Estos valores se obtienen considerando que la conjunción de dos enunciados es verdadera solo si ambos son verdaderos, los cuales se obtienen descomponiendo la proposición en partes más simples y aplicando los resultados de las tablas \ref{tab:tabladeverdad1} y \ref{tab:tabladeverdad2}.
+    \begin{nscenter}
+        \begin{NiceTabular}{cccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+            $p$ & $q$ & $r$ & $\neg r$ & $r \rightarrow p$ & $q \land \left( \neg r \rightarrow p \right)$ \\ 
+            0 & 0 & 0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 1 & 0 \\ 
+            0 & 1 & 0 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 0 & 1 & 1 \\
+            1 & 0 & 0 & 1 & 1 & 0 \\
+            1 & 0 & 1 & 0 & 1 & 0 \\
+            1 & 1 & 0 & 1 & 1 & 1 \\
+            1 & 1 & 1 & 0 & 1 & 1
+        \end{NiceTabular}
+        \captionof{table}{}\label{tab:tabladeverdad3}
+    \end{nscenter}
+\end{examplebox}
+
+\newpage
+
+\begin{examplebox}{}{}
+    En la tabla \ref{tab:tabladeverdad4}, desarrollamos las tablas de verdad para las proposiciones compuestas $p \lor (q \land r)$ y $(p \lor q) \land r$.
+    \begin{nscenter}
+        \begin{NiceTabular}{ccccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+            $p$ & $q$ & $r$ & $q \land r$ & $p \lor (q \land r)$ & $p \lor q$ & $(p \lor q) \land r$ \\
+            0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 1 & 1 & 1 & 1 \\
+            1 & 0 & 0 & 0 & 1 & 1 & 0 \\
+            1 & 0 & 1 & 0 & 1 & 1 & 1 \\
+            1 & 1 & 0 & 0 & 1 & 1 & 0 \\
+            1 & 1 & 1 & 1 & 1 & 1 & 1
+        \end{NiceTabular}
+        \captionof{table}{}\label{tab:tabladeverdad4}
+    \end{nscenter}
+    Debido a que los valores de verdad en las columnas 5 y 7 difieren (en las filas 5 y 7), debemos evitar escribir una proposición compuesta como $p \lor q \land r$ sin paréntesis para indicar cuál de los conectores lógicos $\lor$ y $\land$ se debe aplicar primero. Sin los paréntesis, no sabemos si estamos tratando con $p \lor (q \land r)$ o $(p \lor q) \land r$.
+\end{examplebox}
+
+\begin{examplebox}{}{}
+    Los resultados en las columnas 4 y 7 de la tabla \ref{tab:tabladeverdad5} revelan que la afirmación $p \rightarrow (p \lor q)$ es verdadera y que la afirmación $p \land (\neg p \land q)$ es falsa para todas las asignaciones de valores de verdad a las afirmaciones componentes $p$ y $q$.
+    \begin{nscenter}
+        \begin{NiceTabular}{ccccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+            $p$ & $q$ & $p \lor q$ & $p \rightarrow (p \lor q)$ & $\neg p$ & $\neg p \land q$ & $p \land (\neg p \land q)$ \\
+            0 & 0 & 0 & 1 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+            1 & 0 & 1 & 1 & 0 & 0 & 0 \\
+            1 & 1 & 1 & 1 & 1 & 0 & 0
+        \end{NiceTabular}
+        \captionof{table}{}\label{tab:tabladeverdad5}
+    \end{nscenter}
+\end{examplebox}
+
+\begin{definicion}{}{}
+    Una proposición compuesta se llama una \emph{tautología} si es verdadera bajo cualquier asignación de valores de verdad a sus componentes. Si una proposición compuesta es falsa en todas estas asignaciones, entonces se le llama \emph{contradicción}.
+\end{definicion}
+
+A lo largo de este capítulo utilizaremos el símbolo $T_0$ para denotar cualquier tautología y el símbolo $F_0$ para denotar cualquier contradicción.
+
+Podemos usar las ideas de tautología e implicación para describir lo que entendemos por un argumento válido. Esto será de gran interés para nosotros en la sección 1.3 y nos ayudará a desarrollar las habilidades necesarias para demostrar teoremas matemáticos. En general, un argumento comienza con una lista de enunciados llamados premisas y un enunciado llamado la conclusión del argumento. Si todas las premisas $p_1, p_2, p_3, \dots, p_n$ son verdaderas, entonces la conclusión $q$ también es verdadera. Una forma de hacerlo es examinando la implicación
+$$(p_1 \land p_2 \land p_3 \land \cdots \land p_n) \rightarrow p$$
+donde la hipótesis es la conjunción de las $n$ premisas. Si alguna de las premisas $p_1, p_2, p_3, \dots, p_n$ es falsa, entonces, sin importar cuál sea el valor de verdad de $q$, la implicación $(p_1 \land p_2 \land p_3 \land \cdots \land p_n) \rightarrow q$ será verdadera. Por lo tanto, si partimos de las premisas $p_1, p_2, p_3, \dots, p_n$, y cada una tiene un valor de verdad 1, y encontramos que bajo estas condiciones $q$ también tiene un valor de 1, entonces la implicación
+$$(p_1 \land p_2 \land p_3 \land \cdots \land p_n) \rightarrow p$$
+es una tautología y tenemos un argumento válido.
+
+\section{Equivalencia lógica: Las leyes de la lógica}
+
+En todas las áreas de las matemáticas, es fundamental reconocer cuándo las entidades que estamos estudiando son iguales o esencialmente equivalentes. Por ejemplo, en aritmética y álgebra sabemos que dos números reales no nulos son iguales cuando tienen la misma magnitud y el mismo signo algebraico. Así, para dos números reales no nulos $x$ e $y$, tenemos que $x = y$ si $|x| = |y|$ y $xy > 0$, y viceversa (es decir, si $x = y$, entonces $|x| = |y|$ y $xy > 0$). En geometría, cuando trabajamos con triángulos, surge la noción de congruencia. Aquí, el triángulo $ABC$ y el triángulo $DEF$ son congruentes si, por ejemplo, tienen lados correspondientes iguales, es decir, la longitud del lado $AB$ es igual a la longitud del lado $DE$, la longitud del lado $BC$ es igual a la longitud del lado $EF$, y la longitud del lado $CA$ es igual a la longitud del lado $FD$.
+
+El estudio de la lógica a menudo se conoce como el \emph{álgebra de proposiciones} (en contraposición al álgebra de los números reales). En esta álgebra, utilizaremos las tablas de verdad de las proposiciones o enunciados para desarrollar una idea de cuándo dos de estas entidades son esencialmente iguales. Comencemos con el siguiente ejemplo
+
+\begin{examplebox}{}{}
+    Para los enunciados primitivos $p$ y $q$, la tabla \ref{tab:tabladeverdad6} muestra las tablas de verdad de las proposiciones compuestas $\neg p \lor q$ y $p \rightarrow q$. Aquí podemos observar que las tablas de verdad correspondientes para ambos enunciados, $\neg p \lor q$ y $p \rightarrow q$, son exactamente iguales.
+    \begin{nscenter}
+        \begin{NiceTabular}{ccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+        \CodeBefore
+        \rowcolor{cw0!80}{1}
+        \rowcolors{2}{cw2!70!white}{cw1!30!white}
+        \Body
+        \RowStyle[color=white]{}
+            $p$ & $q$ & $\neg p$ & $\neg p \lor q$ & $p \rightarrow q$ \\
+            0 & 0 & 1 & 1 & 1 \\
+            0 & 1 & 1 & 1 & 1 \\
+            1 & 0 & 0 & 0 & 0 \\
+            1 & 1 & 0 & 1 & 1
+        \end{NiceTabular}
+        \captionof{table}{}\label{tab:tabladeverdad6}
+    \end{nscenter}
+\end{examplebox}
+
+El anterior ejemplo nos lleva a la siguiente definición
+
+\begin{definicion}{}{}
+    Dos enunciados $s_1$ y $s_2$ se dicen lógicamente equivalentes, y se escribe $s_1 \Leftrightarrow s_2$, cuando el enunciado $s_1$ es verdadero (o falso) si y solo si el enunciado $s_2$ es verdadero (o falso).
+\end{definicion}
+
+En otras palabras, $s_1$ y $s_2$ son lógicamente equivalentes cuando sus tablas de verdad tienen los mismos valores.
+
+Como resultado de esta definición, podemos ver que es posible expresar el conector de implicación (entre enunciados primitivos) en términos de negación y disyunción, es decir, $(p \rightarrow q) \leftrightarrow \neg p \lor q$. De manera similar, a partir del resultado en la tabla \ref{tab:tabladeverdad7}, obtenemos que $(p \leftrightarrow q) \leftrightarrow (p \rightarrow q) \land (q \rightarrow p)$, lo que justifica el uso del término bicondicional. Usando la equivalencia lógica de la tabla \ref{tab:tabladeverdad6}, también podemos escribir $(p \leftrightarrow q) \rightarrow (\neg p \lor q) \land (\neg q \lor p)$. Por lo tanto, si así lo deseamos, podemos eliminar los conectores $\rightarrow$ y $\leftrightarrow$ de los enunciados compuestos.
+
+\newpage
+
+\begin{nscenter}
+    \centering
+    \begin{NiceTabular}{cccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+    \CodeBefore
+    \rowcolor{cw0!80}{1}
+    \rowcolors{2}{cw2!70!white}{cw1!30!white}
+    \Body
+    \RowStyle[color=white]{}
+        $p$ & $q$ & $p \rightarrow q$ & $q \rightarrow p$ & $(p \rightarrow q) \land (q \rightarrow p)$ & $p \leftrightarrow q$ \\
+        0 & 0 & 1 & 1 & 1 & 1 \\
+        0 & 1 & 1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 1 & 0 & 0 \\
+        1 & 1 & 1 & 1 & 1 & 1
+    \end{NiceTabular}
+    \captionof{table}{}\label{tab:tabladeverdad7}
+\end{nscenter}
+
+Al examinar la tabla \ref{tab:tabladeverdad8}, encontramos que la negación, junto con los conectores $\land$ y $\lor$, son suficientes para reemplazar el conector de “o exclusivo” ($\veebar$). De hecho, incluso podríamos eliminar uno de los conectores $\land$ o $\lor$. Sin embargo, para las aplicaciones relacionadas que queremos estudiar más adelante en el texto, necesitaremos tanto $\land$ como $\lor$, además de la negación.
+\begin{nscenter}
+    \begin{NiceTabular}{ccccccc}[hvlines-except-borders, cell-space-limits=4pt, rules={color=white,width=1pt}]
+    \CodeBefore
+    \rowcolor{cw0!80}{1}
+    \rowcolors{2}{cw2!70!white}{cw1!30!white}
+    \Body
+    \RowStyle[color=white]{}
+        $p$ & $q$ & $p \veebar q$ & $p \lor q$ & $p \land q$ & $\neg (p \land q)$ & $(p \lor q) \land \neg (p \land q)$ \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 1 & 1 & 1 & 0 & 1 & 1 \\
+        1 & 0 & 1 & 1 & 0 & 1 & 1 \\
+        1 & 1 & 0 & 1 & 1 & 0 & 0
+    \end{NiceTabular}
+    \captionof{table}{}\label{tab:tabladeverdad8}
+\end{nscenter}
+
+Ahora utilizamos la idea de equivalencia lógica para examinar algunas de las propiedades importantes que se cumplen en el álgebra de proposiciones. 
+
+Para todos los números reales $a$ y $b$, sabemos que $-(a + b) = (-a) + (-b)$. ¿Existe un resultado comparable para los enunciados primitivos $p$ y $q$?
+
+\begin{examplebox}{}{}
+    En la Tabla 2.9 hemos construido las tablas de verdad para las afirmaciones $-(p \land q)$, $p \lor \neg q$, $(p \lor q)$ y $\neg p \land \neg q$, donde $p$ y $q$ son enunciados primitivos. Las columnas 4 y 7 revelan que $-(p \land q) \leftrightarrow \neg p \lor \neg q$; las columnas 9 y 10 muestran que $-(p \lor q) \leftrightarrow \neg p \land \neg q$. Estos resultados son conocidos como las Leyes de De Morgan. Son similares a la ley familiar para números reales
+    $$-(a + b) = (-a) + (-b)$$
+    que ya hemos mencionado, y que muestra que el negativo de una suma es igual a la suma de los negativos. Sin embargo, aquí surge una diferencia crucial: la negación de la conjunción de dos enunciados primitivos $p$ y $q$ resulta en la disyunción de sus negaciones $\neg p$ y $\neg q$, mientras que la negación de la disyunción de esos mismos enunciados $p$ y $q$ es lógicamente equivalente a la conjunción de sus negaciones $\neg p$ y $\neg q$.
+\end{examplebox}
